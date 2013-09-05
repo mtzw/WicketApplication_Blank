@@ -12,7 +12,6 @@ public class HomePage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("serial")
 	public HomePage(final PageParameters parameters) {
 		add(new Label("message", "Congratulations!"));
 		add(new Link<Void>("link") {

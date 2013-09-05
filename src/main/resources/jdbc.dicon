@@ -8,8 +8,12 @@
     <property name="driverClassName">
       "org.h2.Driver"
     </property>
+    <!--
+      demo.h2.dbを適当な場所にコピーし、以下のURLを設定します。
+      例) c:\db\demo.h2.dbにコピーした場合 ⇒ jdbc:h2:file:c:/db/demo
+    -->
     <property name="URL">
-      "jdbc:h2:tcp://localhost:9092/demo"
+      "jdbc:h2:file:demo"
     </property>
     <property name="user">"sa"</property>
     <property name="password">""</property>

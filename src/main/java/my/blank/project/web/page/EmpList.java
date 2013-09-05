@@ -20,7 +20,6 @@ public class EmpList extends WebPage {
 	@Binding
 	protected EmpService empService;
 
-	@SuppressWarnings("serial")
 	public EmpList(final PageParameters parameters) {
 		add(new ListView<Emp>("empList", empService.selectAll()) {
 			private static final long serialVersionUID = 1L;
