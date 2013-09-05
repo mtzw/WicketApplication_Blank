@@ -15,12 +15,10 @@ Doma         http://doma.seasar.org/<br>
 <br>
 <br>
 
-<h3>推奨開発環境</h3>
-<br>
+<b>推奨開発環境</b>
 <br>
 Eclipse Standard 4.3<br>
 IntelliJ Idea 12.1.4<br>
-<br>
 <br>
 いずれも、より新しいバージョンの利用を推奨します。<br>
 実行には注釈処理を有効にする必要がありますが、<br>
