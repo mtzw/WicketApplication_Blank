@@ -11,5 +11,17 @@ S2Conatiner  http://s2container.seasar.org/2.4/ja/<br>
 S2Wicket     http://s2wicket.sandbox.seasar.org/<br>
 Doma         http://doma.seasar.org/<br>
 
+まずは、プロジェクトをチェックアウトしてから mvn jetty:run と実行してください。<br>
+<br>
+<br>
 
-まずは、プロジェクトをチェックアウトしてから mvn jetty:run と実行してください。
+<h3>推奨開発環境</h3>
+<br>
+<br>
+Eclipse Standard 4.3<br>
+IntelliJ Idea 12.1.4<br>
+<br>
+<br>
+いずれも、より新しいバージョンの利用を推奨します。<br>
+実行には注釈処理を有効にする必要がありますが、<br>
+Eclipseを使用する場合はチェックアウト直後の状態で設定済です。<br>
