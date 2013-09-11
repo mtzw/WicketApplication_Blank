@@ -1,5 +1,7 @@
 package my.blank.project.entity;
 
+import java.io.Serializable;
+
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
@@ -13,7 +15,7 @@ import org.seasar.doma.Version;
  */
 @Entity(listener = DeptListener.class)
 @Table(name = "DEPT")
-public class Dept {
+public class Dept implements Serializable {
 
     /**  */
     @Id

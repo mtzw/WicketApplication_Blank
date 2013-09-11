@@ -1,7 +1,9 @@
 package my.blank.project.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
+
 import org.seasar.doma.Column;
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
@@ -15,7 +17,7 @@ import org.seasar.doma.Version;
  */
 @Entity(listener = EmpListener.class)
 @Table(name = "EMP")
-public class Emp {
+public class Emp implements Serializable {
 
     /**  */
     @Id
