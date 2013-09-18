@@ -14,6 +14,7 @@
 	<property name="configClassName" value="my.blank.project.config.AppConfig" />
 	<property name="sqlTestClassName" value="my.blank.project.config.SqlTest" />
 	<property name="sqlFilePattern" value="META-INF/**/*.sql" />
+	<property name="templateprimarydir" value="gen_templates"/>
 
 	<path id="classpath">
 		<fileset dir="lib" />
@@ -28,7 +29,8 @@
 
 	<target name="gen">
 		<gen dialectName="${dialectName}" driverClassName="${driverClassName}"
-			url="${url}" user="${user}" password="${password}" templateprimarydir="gen_templates">
+			url="${url}" user="${user}" password="${password}"
+			templateprimarydir="${templateprimarydir}">
 			<entityConfig destdir="${javaDestDir}" packageName="${entityPackageName}" />
 			<daoConfig destdir="${javaDestDir}" packageName="${daoPackageName}"
 				configClassName="${configClassName}" usedelegate="true" />
@@ -38,7 +40,8 @@
 
 	<target name="genTest">
 		<genTest dialectName="${dialectName}" driverClassName="${driverClassName}"
-			url="${url}" user="${user}" password="${password}">
+			url="${url}" user="${user}" password="${password}"
+			templateprimarydir="${templateprimarydir}">
 			<sqlTestConfig destdir="${javaTestDestDir}" testClassName="${sqlTestClassName}">
 				<fileset dir="${sqlDestDir}">
 					<include name="${sqlFilePattern}" />
