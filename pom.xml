@@ -21,7 +21,7 @@
 	<properties>
 		<s2framework.version>2.4.46</s2framework.version>
 		<s2wicket.version>6.9.0</s2wicket.version>
-		<doma.version>1.33.0</doma.version>
+		<doma.version>1.35.0</doma.version>
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
 		<jetty.version>7.6.12.v20130726</jetty.version>
