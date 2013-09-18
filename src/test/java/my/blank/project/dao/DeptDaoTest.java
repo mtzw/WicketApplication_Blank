@@ -14,46 +14,30 @@
  * governing permissions and limitations under the License.
  */
 
-package my.blank.project.service;
+package my.blank.project.dao;
 
-import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-
-import java.util.Collections;
+import my.blank.project.entity.Dept;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seasar.framework.container.annotation.tiger.Binding;
 import org.seasar.framework.unit.Seasar2;
-import org.seasar.framework.unit.annotation.EasyMock;
-import org.seasar.framework.unit.annotation.EasyMockType;
 
 @RunWith(Seasar2.class)
-public class EmpServiceTest {
+public class DeptDaoTest {
 
-	@Binding
-	protected EmpService empService;
-
-	@EasyMock(register = false, value = EasyMockType.NICE)
-	private EmpService mockService;
+	protected DeptDao deptDao;
 
 	@Test
-	public void testInject() {
-		assertThat(empService, is(notNullValue()));
-	}
+	public void testInsertOrUpdate() {
+		Dept entity = new Dept();
+		entity.setDeptNo(4560);
+		entity.setDeptName("Shinjuku");
+		entity.setLoc("Shinjuku");
 
-	@Test
-	@SuppressWarnings("unchecked")
-	public void testSelectAll() {
-		expect(mockService.selectAll()).andReturn(Collections.EMPTY_LIST)
-				.anyTimes();
-
-		replay(mockService);
-
-		assertThat(mockService.selectAll(), is(Collections.EMPTY_LIST));
-
-		verify(mockService);
+		int actual = deptDao.insertOrUpdate(entity);
+		assertThat(actual, is(-1));
 	}
 
 }

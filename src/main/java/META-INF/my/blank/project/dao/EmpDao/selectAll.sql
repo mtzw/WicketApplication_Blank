@@ -1,1 +1,4 @@
-select * from EMP
+SELECT
+  *
+FROM
+  EMP

@@ -2,10 +2,11 @@
 <project name="doma-gen-build" default="gen" basedir=".">
 
 	<property name="javaDestDir" value="src/main/java" />
+	<property name="javaTestDestDir" value="src/test/java" />
 	<property name="sqlDestDir" value="src/main/java" />
 	<property name="dialectName" value="h2" />
 	<property name="driverClassName" value="org.h2.Driver" />
-	<property name="url" value="jdbc:h2:tcp://localhost:9092/demo" />
+	<property name="url" value="jdbc:h2:file:demo" />
 	<property name="user" value="sa" />
 	<property name="password" value="" />
 	<property name="entityPackageName" value="my.blank.project.entity" />
@@ -27,10 +28,10 @@
 
 	<target name="gen">
 		<gen dialectName="${dialectName}" driverClassName="${driverClassName}"
-			url="${url}" user="${user}" password="${password}">
+			url="${url}" user="${user}" password="${password}" templateprimarydir="gen_templates">
 			<entityConfig destdir="${javaDestDir}" packageName="${entityPackageName}" />
 			<daoConfig destdir="${javaDestDir}" packageName="${daoPackageName}"
-				configClassName="${configClassName}" />
+				configClassName="${configClassName}" usedelegate="true" />
 			<sqlConfig destdir="${sqlDestDir}" />
 		</gen>
 	</target>
@@ -38,7 +39,7 @@
 	<target name="genTest">
 		<genTest dialectName="${dialectName}" driverClassName="${driverClassName}"
 			url="${url}" user="${user}" password="${password}">
-			<sqlTestConfig destdir="${javaDestDir}" testClassName="${sqlTestClassName}">
+			<sqlTestConfig destdir="${javaTestDestDir}" testClassName="${sqlTestClassName}">
 				<fileset dir="${sqlDestDir}">
 					<include name="${sqlFilePattern}" />
 				</fileset>
