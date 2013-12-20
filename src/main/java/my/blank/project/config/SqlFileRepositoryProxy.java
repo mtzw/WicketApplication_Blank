@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.config;
 
 import org.seasar.doma.jdbc.AbstractSqlFileRepository;
@@ -26,16 +25,16 @@ import org.seasar.framework.container.hotdeploy.HotdeployUtil;
 
 public class SqlFileRepositoryProxy extends AbstractSqlFileRepository {
 
-	private final SqlFileRepository greedyCacheSqlFileRepository = new GreedyCacheSqlFileRepository();
+    private final SqlFileRepository greedyCacheSqlFileRepository = new GreedyCacheSqlFileRepository();
 
-	private final SqlFileRepository noCacheSqlFileRepository = new NoCacheSqlFileRepository();
+    private final SqlFileRepository noCacheSqlFileRepository = new NoCacheSqlFileRepository();
 
-	@Override
-	protected SqlFile getSqlFileWithCacheControl(String path, Dialect dialect) {
-		if (HotdeployUtil.isHotdeploy()) {
-			return noCacheSqlFileRepository.getSqlFile(path, dialect);
-		}
-		return greedyCacheSqlFileRepository.getSqlFile(path, dialect);
-	}
+    @Override
+    protected SqlFile getSqlFileWithCacheControl(String path, Dialect dialect) {
+        if (HotdeployUtil.isHotdeploy()) {
+            return noCacheSqlFileRepository.getSqlFile(path, dialect);
+        }
+        return greedyCacheSqlFileRepository.getSqlFile(path, dialect);
+    }
 
 }

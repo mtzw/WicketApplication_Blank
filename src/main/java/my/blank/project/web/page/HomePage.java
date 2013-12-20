@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.web.page;
 
 import org.apache.wicket.markup.html.WebPage;
@@ -26,16 +25,16 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class HomePage extends WebPage {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public HomePage(final PageParameters parameters) {
-		add(new Label("message", "Congratulations!"));
-		add(new Link<Void>("link") {
-			@Override
-			public void onClick() {
-				setResponsePage(EmpList.class);
-			}
-		});
-	}
+    public HomePage(final PageParameters parameters) {
+        add(new Label("message", "Congratulations!"));
+        add(new Link<Void>("link") {
+            @Override
+            public void onClick() {
+                setResponsePage(EmpList.class);
+            }
+        });
+    }
 
 }
