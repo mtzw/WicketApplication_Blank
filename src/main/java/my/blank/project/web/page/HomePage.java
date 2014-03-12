@@ -31,6 +31,8 @@ public class HomePage extends WebPage {
 	public HomePage(final PageParameters parameters) {
 		add(new Label("message", "Congratulations!"));
 		add(new Link<Void>("link") {
+			private static final long serialVersionUID = 4523514312067148417L;
+
 			@Override
 			public void onClick() {
 				setResponsePage(EmpList.class);

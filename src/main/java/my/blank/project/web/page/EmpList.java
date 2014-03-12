@@ -41,6 +41,8 @@ public class EmpList extends WebPage {
 		PageableListView<Emp> listView;
 		add(listView = new PageableListView<Emp>("empList",
 				empService.selectAll(), 5) {
+			private static final long serialVersionUID = -7590937969459283595L;
+
 			@Override
 			protected void populateItem(ListItem<Emp> item) {
 				Emp emp = item.getModelObject();

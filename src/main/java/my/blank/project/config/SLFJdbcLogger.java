@@ -16,119 +16,126 @@
 
 package my.blank.project.config;
 
+import static my.blank.project.config.Loggers.*;
+import static org.seasar.doma.message.Message.*;
+
 import java.sql.SQLException;
 
 import org.seasar.doma.jdbc.JdbcLogger;
 import org.seasar.doma.jdbc.Sql;
 import org.seasar.doma.jdbc.SqlExecutionSkipCause;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class CommonsJdbcLogger implements JdbcLogger {
+public class SLFJdbcLogger implements JdbcLogger {
 
 	@Override
-	public void logConnectionClosingFailure(String callerClassName,
-			String callerMethodName, SQLException e) {
+	public void logDaoMethodEntering(String callerClassName,
+			String callerMethodName, Object... args) {
+		JDBC_LOGGER.debug("ENTRY");
 	}
 
 	@Override
-	public void logStatementClosingFailure(String callerClassName,
-			String callerMethodName, SQLException e) {
+	public void logDaoMethodExiting(String callerClassName,
+			String callerMethodName, Object result) {
+		JDBC_LOGGER.debug(String.format("RETURN %s", result));
 	}
 
 	@Override
-	public void logResultSetClosingFailure(String callerClassName,
-			String callerMethodName, SQLException e) {
+	public void logDaoMethodThrowing(String callerClassName,
+			String callerMethodName, RuntimeException e) {
+		JDBC_LOGGER.error(String.format("THROW %s", e.toString()), e);
+	}
+
+	@Override
+	public void logSqlExecutionSkipping(String callerClassName,
+			String callerMethodName, SqlExecutionSkipCause cause) {
+		JDBC_LOGGER.debug(cause.name());
+	}
+
+	@Override
+	public void logSql(String callerClassName, String callerMethodName,
+			Sql<?> sql) {
+		JDBC_LOGGER.debug(DOMA2076.getMessage(sql.getSqlFilePath(),
+				sql.getFormattedSql()));
+	}
+
+	@Override
+	public void logLocalTransactionBegun(String callerClassName,
+			String callerMethodName, String transactionId) {
+		JDBC_LOGGER.debug(DOMA2063.getMessage(transactionId));
+	}
+
+	@Override
+	public void logLocalTransactionEnded(String callerClassName,
+			String callerMethodName, String transactionId) {
+		JDBC_LOGGER.debug(DOMA2064.getMessage(transactionId));
+	}
+
+	@Override
+	public void logLocalTransactionSavepointCreated(String callerClassName,
+			String callerMethodName, String transactionId, String savepointName) {
+		JDBC_LOGGER.debug(DOMA2065.getMessage(transactionId, savepointName));
+	}
+
+	@Override
+	public void logLocalTransactionSavepointReleased(String callerClassName,
+			String callerMethodName, String transactionId, String savepointName) {
+		JDBC_LOGGER.debug(DOMA2066.getMessage(transactionId, savepointName));
+	}
+
+	@Override
+	public void logLocalTransactionCommitted(String callerClassName,
+			String callerMethodName, String transactionId) {
+		JDBC_LOGGER.debug(DOMA2067.getMessage(transactionId));
+	}
+
+	@Override
+	public void logLocalTransactionRolledback(String callerClassName,
+			String callerMethodName, String transactionId) {
+		JDBC_LOGGER.debug(DOMA2068.getMessage(transactionId));
+	}
+
+	@Override
+	public void logLocalTransactionSavepointRolledback(String callerClassName,
+			String callerMethodName, String transactionId, String savepointName) {
+		JDBC_LOGGER.debug(DOMA2069.getMessage(transactionId, savepointName));
+
+	}
+
+	@Override
+	public void logLocalTransactionRollbackFailure(String callerClassName,
+			String callerMethodName, String transactionId, SQLException e) {
+		JDBC_LOGGER.error(DOMA2070.getMessage(transactionId));
 	}
 
 	@Override
 	public void logAutoCommitEnablingFailure(String callerClassName,
 			String callerMethodName, SQLException e) {
+		JDBC_LOGGER.debug(DOMA2071.getMessage(), e);
 	}
 
 	@Override
 	public void logTransactionIsolationSettingFailuer(String callerClassName,
 			String callerMethodName, int transactionIsolationLevel,
 			SQLException e) {
+		JDBC_LOGGER.error(DOMA2072.getMessage(transactionIsolationLevel), e);
 	}
 
 	@Override
-	public void logDaoMethodEntering(String callerClassName,
-			String callerMethodName, Object... parameters) {
-		Logger logger = LoggerFactory.getLogger(callerClassName);
-		logger.info("START " + callerClassName + "#" + callerMethodName);
+	public void logConnectionClosingFailure(String callerClassName,
+			String callerMethodName, SQLException e) {
+		JDBC_LOGGER.error(DOMA2073.getMessage(), e);
 	}
 
 	@Override
-	public void logDaoMethodExiting(String callerClassName,
-			String callerMethodName, Object result) {
-		Logger logger = LoggerFactory.getLogger(callerClassName);
-		logger.info("END   " + callerClassName + "#" + callerMethodName);
+	public void logStatementClosingFailure(String callerClassName,
+			String callerMethodName, SQLException e) {
+		JDBC_LOGGER.error(DOMA2074.getMessage(), e);
 	}
 
 	@Override
-	public void logDaoMethodThrowing(String callerClassName,
-			String callerMethodName, RuntimeException e) {
-		Logger logger = LoggerFactory.getLogger(callerClassName);
-		logger.info("END   " + callerClassName + "#" + callerMethodName
-				+ " RuntimeException: " + e);
-	}
-
-	@Override
-	public void logSqlExecutionSkipping(String callerClassName,
-			String callerMethodName, SqlExecutionSkipCause cause) {
-		Logger logger = LoggerFactory.getLogger(callerClassName);
-		logger.info("SKIPPED(" + cause.name() + ") " + callerClassName + "#"
-				+ callerMethodName);
-	}
-
-	@Override
-	public void logSql(String callerClassName, String callerMethodName,
-			Sql<?> sql) {
-		Logger logger = LoggerFactory.getLogger(callerClassName);
-		String message = String.format("SQL log. sqlFilePath=[%s],%n%s",
-				sql.getSqlFilePath(), sql.getFormattedSql());
-		logger.info(message);
-	}
-
-	@Override
-	public void logLocalTransactionBegun(String callerClassName,
-			String callerMethodName, String transactionId) {
-	}
-
-	@Override
-	public void logLocalTransactionCommitted(String callerClassName,
-			String callerMethodName, String transactionId) {
-	}
-
-	@Override
-	public void logLocalTransactionRolledback(String callerClassName,
-			String callerMethodName, String transactionId) {
-	}
-
-	@Override
-	public void logLocalTransactionSavepointCreated(String callerClassName,
-			String callerMethodName, String transactionId, String savepointName) {
-	}
-
-	@Override
-	public void logLocalTransactionSavepointReleased(String callerClassName,
-			String callerMethodName, String transactionId, String savepointName) {
-	}
-
-	@Override
-	public void logLocalTransactionSavepointRolledback(String callerClassName,
-			String callerMethodName, String transactionId, String savepointName) {
-	}
-
-	@Override
-	public void logLocalTransactionRollbackFailure(String callerClassName,
-			String callerMethodName, String transactionId, SQLException e) {
-	}
-
-	@Override
-	public void logLocalTransactionEnded(String callerClassName,
-			String callerMethodName, String transactionId) {
+	public void logResultSetClosingFailure(String callerClassName,
+			String callerMethodName, SQLException e) {
+		JDBC_LOGGER.error(DOMA2075.getMessage(), e);
 	}
 
 }

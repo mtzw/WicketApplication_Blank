@@ -36,7 +36,7 @@ public class AppConfig implements Config {
 
 	private static SqlFileRepository sqlfileRepository = new SqlFileRepositoryProxy();
 
-	private static JdbcLogger jdbcLogger = new CommonsJdbcLogger();
+	private static JdbcLogger jdbcLogger = new SLFJdbcLogger();
 
 	private static RequiresNewController requiresNewController = new S2RequiresNewController();
 

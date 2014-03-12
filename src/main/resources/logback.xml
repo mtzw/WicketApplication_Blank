@@ -8,11 +8,14 @@
 			</Pattern>
 		</layout>
 	</appender>
-	<logger name="org.seasar">
+	<logger name="app">
 		<level value="DEBUG" />
 	</logger>
-	<logger name="my.blank.project">
+	<logger name="jdbc">
 		<level value="DEBUG" />
+	</logger>
+	<logger name="org.seasar">
+		<level value="WARN" />
 	</logger>
 	<root>
 		<level value="ERROR" />

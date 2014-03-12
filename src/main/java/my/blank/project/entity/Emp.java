@@ -35,7 +35,12 @@ import org.seasar.doma.Version;
 @Table(name = "EMP")
 public class Emp implements Serializable {
 
-    /**  */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6015006236305197286L;
+
+	/**  */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

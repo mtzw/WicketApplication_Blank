@@ -33,7 +33,12 @@ import org.seasar.doma.Version;
 @Table(name = "DEPT")
 public class Dept implements Serializable {
 
-    /**  */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3407478611280476876L;
+
+	/**  */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

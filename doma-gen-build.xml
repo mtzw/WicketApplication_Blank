@@ -3,7 +3,7 @@
 
 	<property name="javaDestDir" value="src/main/java" />
 	<property name="javaTestDestDir" value="src/test/java" />
-	<property name="sqlDestDir" value="src/main/java" />
+	<property name="sqlDestDir" value="src/main/resources" />
 	<property name="dialectName" value="h2" />
 	<property name="driverClassName" value="org.h2.Driver" />
 	<property name="url" value="jdbc:h2:file:demo" />
