@@ -18,7 +18,7 @@ package my.blank.project.dao;
 
 import java.util.List;
 
-import my.blank.project.config.AppConfig;
+import my.blank.project.config.DomaConfig;
 import my.blank.project.entity.Emp;
 
 import org.seasar.doma.Dao;
@@ -29,7 +29,7 @@ import org.seasar.doma.Update;
 
 /**
  */
-@Dao(config = AppConfig.class)
+@Dao(config = DomaConfig.class)
 public interface EmpDao {
 
 	/**

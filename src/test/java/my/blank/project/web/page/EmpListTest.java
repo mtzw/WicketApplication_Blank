@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.web.page;
 
 import static org.easymock.EasyMock.*;
@@ -37,62 +36,62 @@ import org.seasar.wicket.ComponentInjectionListener;
 
 public class EmpListTest extends S2TigerTestCase {
 
-	@EasyMock(register = true)
-	protected EmpService empService;
+    @EasyMock(register = true)
+    protected EmpService empService;
 
-	/**
-	 * WicketTester
-	 */
-	protected WicketTester tester;
+    /**
+     * WicketTester
+     */
+    protected WicketTester tester;
 
-	/**
-	 * Configure WicketTester instance.
-	 */
-	@Override
-	protected void setUp() throws Exception {
-		tester = new WicketTester(EmpList.class);
-		tester.getApplication().getComponentInstantiationListeners()
-				.add(new ComponentInjectionListener());
-		tester.getApplication().getMarkupSettings()
-				.setDefaultMarkupEncoding("utf-8");
-	}
+    /**
+     * Configure WicketTester instance.
+     */
+    @Override
+    protected void setUp() throws Exception {
+        tester = new WicketTester(EmpList.class);
+        tester.getApplication().getComponentInstantiationListeners()
+                .add(new ComponentInjectionListener());
+        tester.getApplication().getMarkupSettings()
+                .setDefaultMarkupEncoding("utf-8");
+    }
 
-	@Test
-	public void testRenderEmpListPage() {
-		List<Emp> empList = new ArrayList<>();
-		Emp emp = new Emp();
-		emp.setId(110L);
-		emp.setEmpNo(97768);
-		emp.setEmpName("Test Engineer");
-		empList.add(emp);
+    @Test
+    public void testRenderEmpListPage() {
+        List<Emp> empList = new ArrayList<>();
+        Emp emp = new Emp();
+        emp.setId(110L);
+        emp.setEmpNo(97768);
+        emp.setEmpName("Test Engineer");
+        empList.add(emp);
 
-		expect(empService.selectAll()).andReturn(empList).anyTimes();
+        expect(empService.selectAll()).andReturn(empList).anyTimes();
 
-		replay(empService);
+        replay(empService);
 
-		// start and render the test page
-		tester.startPage(EmpList.class);
+        // start and render the test page
+        tester.startPage(EmpList.class);
 
-		// assert rendered page class
-		tester.assertRenderedPage(EmpList.class);
+        // assert rendered page class
+        tester.assertRenderedPage(EmpList.class);
 
-		// assert rendered components
-		tester.assertContains("EmpList");
-		tester.assertContains("EmpId");
-		tester.assertContains("EmpNo");
-		tester.assertContains("EmpName");
+        // assert rendered components
+        tester.assertContains("EmpList");
+        tester.assertContains("EmpId");
+        tester.assertContains("EmpNo");
+        tester.assertContains("EmpName");
 
-		tester.assertComponent("empList", PageableListView.class);
-		IPageableItems renderedEmpList = (IPageableItems) tester
-				.getComponentFromLastRenderedPage("empList");
-		assertThat(renderedEmpList.getItemCount(), is(1L));
-		tester.assertContains("110");
-		tester.assertContains("97768");
-		tester.assertContains("Test Engineer");
+        tester.assertComponent("empList", PageableListView.class);
+        IPageableItems renderedEmpList = (IPageableItems) tester
+                .getComponentFromLastRenderedPage("empList");
+        assertThat(renderedEmpList.getItemCount(), is(1L));
+        tester.assertContains("110");
+        tester.assertContains("97768");
+        tester.assertContains("Test Engineer");
 
-		tester.assertComponent("navigator", PagingNavigator.class);
+        tester.assertComponent("navigator", PagingNavigator.class);
 
-		verify(empService);
-	}
+        verify(empService);
+    }
 
 }

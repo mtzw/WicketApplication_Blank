@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.dao;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -27,17 +26,17 @@ import org.seasar.framework.unit.Seasar2;
 @RunWith(Seasar2.class)
 public class DeptDaoTest {
 
-	protected DeptDao deptDao;
+    protected DeptDao deptDao;
 
-	@Test
-	public void testInsertOrUpdate() {
-		Dept entity = new Dept();
-		entity.setDeptNo(4560);
-		entity.setDeptName("Shinjuku");
-		entity.setLoc("Shinjuku");
+    @Test
+    public void testInsertOrUpdate() {
+        Dept entity = new Dept();
+        entity.setDeptNo(4560);
+        entity.setDeptName("Shinjuku");
+        entity.setLoc("Shinjuku");
 
-		int actual = deptDao.insertOrUpdate(entity);
-		assertThat(actual, is(-1));
-	}
+        int actual = deptDao.insertOrUpdate(entity);
+        assertThat(actual, is(-1));
+    }
 
 }

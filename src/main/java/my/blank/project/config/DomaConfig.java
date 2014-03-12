@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.config;
 
 import javax.sql.DataSource;
@@ -32,17 +31,17 @@ import org.seasar.extension.datasource.impl.SelectableDataSourceProxy;
 import org.seasar.framework.container.S2Container;
 import org.seasar.framework.container.factory.SingletonS2ContainerFactory;
 
-public class AppConfig implements Config {
+public class DomaConfig implements Config {
 
-	private static SqlFileRepository sqlfileRepository = new SqlFileRepositoryProxy();
+	private static final SqlFileRepository sqlfileRepository = new SqlFileRepositoryProxy();
 
-	private static JdbcLogger jdbcLogger = new SLFJdbcLogger();
+	private static final JdbcLogger jdbcLogger = new SLFJdbcLogger();
 
-	private static RequiresNewController requiresNewController = new S2RequiresNewController();
+	private static final RequiresNewController requiresNewController = new S2RequiresNewController();
 
-	private static Dialect dialect = new H2Dialect();
+	private static final Dialect dialect = new H2Dialect();
 
-	private static ClassHelper classHelper = new DefaultClassHelper();
+	private static final ClassHelper classHelper = new DefaultClassHelper();
 
 	@Override
 	public String getDataSourceName() {

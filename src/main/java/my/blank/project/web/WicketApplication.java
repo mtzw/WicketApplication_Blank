@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.web;
 
 import my.blank.project.web.page.HomePage;
@@ -24,32 +23,34 @@ import org.apache.wicket.protocol.http.WebApplication;
 /**
  * Application object for your web application. If you want to run this
  * application without deploying, run the Start class.
- * 
+ *
  * @see wicket.myproject.Start#main(String[])
  */
 public class WicketApplication extends WebApplication {
-	/**
-	 * Constructor
-	 */
-	public WicketApplication() {
-	}
 
-	/**
-	 * @see org.apache.wicket.Application#getHomePage()
-	 */
-	@Override
-	public Class<? extends WebPage> getHomePage() {
-		return HomePage.class;
-	}
+    /**
+     * Constructor
+     */
+    public WicketApplication() {
+    }
 
-	/**
-	 * @see org.apache.wicket.Application#init()
-	 */
-	@Override
-	public void init() {
-		super.init();
-		// add your configuration here
-		getMarkupSettings().setDefaultMarkupEncoding("utf-8");
-		mountPage("/home", HomePage.class);
-	}
+    /**
+     * @return @see HomePage
+     * @see org.apache.wicket.Application#getHomePage()
+     */
+    @Override
+    public Class<? extends WebPage> getHomePage() {
+        return HomePage.class;
+    }
+
+    /**
+     * @see org.apache.wicket.Application#init()
+     */
+    @Override
+    public void init() {
+        super.init();
+        // add your configuration here
+        getMarkupSettings().setDefaultMarkupEncoding("utf-8");
+        mountPage("/home", HomePage.class);
+    }
 }

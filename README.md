@@ -18,6 +18,7 @@ Doma         http://doma.seasar.org/<br>
 <b>推奨開発環境</b>
 <br>
 Eclipse Standard 4.3<br>
+NetBeans IDE 7.4<br>
 IntelliJ Idea 12.1.4<br>
 <br>
 いずれも、より新しいバージョンの利用を推奨します。<br>

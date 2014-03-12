@@ -13,7 +13,6 @@
  * either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
 package my.blank.project.service;
 
 import static org.easymock.EasyMock.*;
@@ -32,28 +31,28 @@ import org.seasar.framework.unit.annotation.EasyMockType;
 @RunWith(Seasar2.class)
 public class EmpServiceTest {
 
-	@Binding
-	protected EmpService empService;
+    @Binding
+    protected EmpService empService;
 
-	@EasyMock(register = false, value = EasyMockType.NICE)
-	private EmpService mockService;
+    @EasyMock(register = false, value = EasyMockType.NICE)
+    private EmpService mockService;
 
-	@Test
-	public void testInject() {
-		assertThat(empService, is(notNullValue()));
-	}
+    @Test
+    public void testInject() {
+        assertThat(empService, is(notNullValue()));
+    }
 
-	@Test
-	@SuppressWarnings("unchecked")
-	public void testSelectAll() {
-		expect(mockService.selectAll()).andReturn(Collections.EMPTY_LIST)
-				.anyTimes();
+    @Test
+    @SuppressWarnings("unchecked")
+    public void testSelectAll() {
+        expect(mockService.selectAll()).andReturn(Collections.EMPTY_LIST)
+                .anyTimes();
 
-		replay(mockService);
+        replay(mockService);
 
-		assertThat(mockService.selectAll(), is(Collections.EMPTY_LIST));
+        assertThat(mockService.selectAll(), is(Collections.EMPTY_LIST));
 
-		verify(mockService);
-	}
+        verify(mockService);
+    }
 
 }

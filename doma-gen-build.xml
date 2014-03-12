@@ -11,7 +11,7 @@
 	<property name="password" value="" />
 	<property name="entityPackageName" value="my.blank.project.entity" />
 	<property name="daoPackageName" value="my.blank.project.dao" />
-	<property name="configClassName" value="my.blank.project.config.AppConfig" />
+	<property name="configClassName" value="my.blank.project.config.DomaConfig" />
 	<property name="sqlTestClassName" value="my.blank.project.config.SqlTest" />
 	<property name="sqlFilePattern" value="META-INF/**/*.sql" />
 	<property name="templateprimarydir" value="gen_templates"/>

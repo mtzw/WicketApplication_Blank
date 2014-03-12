@@ -16,7 +16,7 @@
 
 package my.blank.project.dao;
 
-import my.blank.project.config.AppConfig;
+import my.blank.project.config.DomaConfig;
 import my.blank.project.entity.Dept;
 
 import org.seasar.doma.Dao;
@@ -28,7 +28,7 @@ import org.seasar.doma.Update;
 
 /**
  */
-@Dao(config = AppConfig.class)
+@Dao(config = DomaConfig.class)
 public interface DeptDao {
 
 	/**

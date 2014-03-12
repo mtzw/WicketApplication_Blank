@@ -44,9 +44,9 @@ public class Start {
 		try {
 			System.out.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
 			server.start();
-			
+
 			Desktop.getDesktop().browse(URI.create("http://localhost:8080/"));
-			
+
 			while (System.in.available() == 0) {
 				Thread.sleep(5000);
 			}
