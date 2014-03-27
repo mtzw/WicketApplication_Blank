@@ -21,15 +21,15 @@ import java.net.URI;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.bio.SocketConnector;
+import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class Start {
 
 	public static void main(String[] args) throws Exception {
 		Server server = new Server();
-		SocketConnector connector = new SocketConnector();
-		connector.setMaxIdleTime(1000 * 60 * 60);
+		ServerConnector connector = new ServerConnector(server);
+		connector.setIdleTimeout(1000 * 60 * 60);
 		connector.setSoLingerTime(-1);
 		connector.setPort(8080);
 		server.setConnectors(new Connector[] { connector });
@@ -42,7 +42,8 @@ public class Start {
 		server.setHandler(bb);
 
 		try {
-			System.out.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
+			System.out
+					.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
 			server.start();
 
 			Desktop.getDesktop().browse(URI.create("http://localhost:8080/"));
